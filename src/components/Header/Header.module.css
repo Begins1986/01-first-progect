@@ -5,6 +5,6 @@
 }
 
 .header{
-    grid-area: h;
+    /*grid-area: h;*/
     background-color: aqua;
 }

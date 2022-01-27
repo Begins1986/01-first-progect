@@ -1,5 +1,6 @@
 .nav{
-    grid-area: n;
+    /*grid-area: n;*/
+    width: 20vw;
     background-color: aquamarine;
     color: #000;
 }
