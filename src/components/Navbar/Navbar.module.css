@@ -15,3 +15,7 @@ a{
 a:hover{
     color: blueviolet;
 }
+
+.activeLink{
+    color: gold;
+}
