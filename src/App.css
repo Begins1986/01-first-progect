@@ -10,6 +10,14 @@
   /*grid-template-columns: 2fr 10fr;*/
 }
 
-.content{
+.content-block{
   display: flex;
+}
+
+.content{
+  /*grid-area: c;*/
+  padding: 20px;
+  width: 80vw;
+  color: #000;
+  background-color: red;
 }

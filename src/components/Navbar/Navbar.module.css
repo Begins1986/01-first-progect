@@ -3,9 +3,15 @@
     width: 20vw;
     background-color: aquamarine;
     color: #000;
+    height: 100%;
+    padding: 20px;
 }
 
 a{
     color: black;
     text-decoration: none;
+}
+
+a:hover{
+    color: blueviolet;
 }
