@@ -1,12 +1,12 @@
 import React from 'react';
 import Post from "./Post/Post";
-import { PropsType} from "../Profile";
+import {PostsType} from "../Profile";
 
-// export type PropsType = {
-//    posts: Array<PostsType>
-// }
+export type MyPostPropsType = {
+   posts: Array<PostsType>
+}
 
-const MyPosts = (props: PropsType) => {
+const MyPosts = (props: MyPostPropsType) => {
     const postItem = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount}/>)
 
     return (
@@ -22,8 +22,6 @@ const MyPosts = (props: PropsType) => {
             </div>
             <div>
                 {postItem}
-                {/*<Post message={postData[0].message} likeCount={postData[0].likeCount}/>*/}
-                {/*<Post message={postData[1].message} likeCount={postData[1].likeCount}/>*/}
             </div>
         </div>
     );

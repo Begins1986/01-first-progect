@@ -6,11 +6,16 @@ import Profile, {PostsType} from "./components/Profile/Profile";
 import Dialogs, {DialogProps, MessageProps} from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-
 type AppPropsType = {
-    posts: Array<PostsType>
-    dialogs: Array<DialogProps>
-    messages: Array<MessageProps>
+    state:{
+        profilePage:{
+            posts: Array<PostsType>
+        }
+        messagePage: {
+            dialogs: Array<DialogProps>
+            messages: Array<MessageProps>
+        }
+    }
 }
 
 const App = (props: AppPropsType) => {
@@ -22,14 +27,14 @@ const App = (props: AppPropsType) => {
                     <Navbar/>
                     <div className="content">
                         <Routes>
-                            <Route path='/profile' element={<Profile posts={props.posts}/>}/>
+                            <Route path='/profile' element={<Profile state={props.state.profilePage}/>}/>
+                            {/*<Route path='/profile' element={<Profile posts={props.state.profilePage.posts}/>}/>*/}
+
                             {/*<Route path='/profile' element={() =><Profile posts={posts}/>}/>*/}
-                            <Route path='/dialogs' element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
-                            <Route path='/news' element={<Profile posts={props.posts}/>}/>
-                            <Route path='/music' element={<Profile posts={props.posts}/>}/>
-                            <Route path='/settings' element={<Profile posts={props.posts}/>}/>
-                            {/*<Dialogs/>*/}
-                            {/*<Profile/>*/}
+                            <Route path='/dialogs' element={<Dialogs state={props.state.messagePage} />}/>
+                            <Route path='/news' element={<Profile state={props.state.profilePage}/>}/>
+                            <Route path='/music' element={<Profile state={props.state.profilePage}/>}/>
+                            <Route path='/settings' element={<Profile state={props.state.profilePage}/>}/>
                         </Routes>
                     </div>
                 </div>

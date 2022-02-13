@@ -3,7 +3,6 @@ import s from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 
-
 export type PostsType = {
     id: number
     message: string
@@ -11,14 +10,16 @@ export type PostsType = {
 }
 
 export type PropsType = {
-    posts: Array<PostsType>
+    state:{
+        posts: Array<PostsType>
+    }
 }
 
 const Profile = (props: PropsType) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.posts}/>
+            <MyPosts posts={props.state.posts}/>
         </div>
     );
 };
