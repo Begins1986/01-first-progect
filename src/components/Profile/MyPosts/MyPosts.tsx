@@ -1,16 +1,13 @@
 import React from 'react';
 import Post from "./Post/Post";
+import { PropsType} from "../Profile";
 
-const MyPosts = () => {
+// export type PropsType = {
+//    posts: Array<PostsType>
+// }
 
-    let posts = [
-        {id: 1, message: '"hello"', likeCount: 5},
-        {id: 2, message: 'Hi', likeCount: 8},
-        {id: 2, message: 'Hi', likeCount: 8},
-        {id: 2, message: 'Hi', likeCount: 8},
-    ]
-
-    const postItem = posts.map(p => <Post message={p.message} likeCount={p.likeCount}/>)
+const MyPosts = (props: PropsType) => {
+    const postItem = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount}/>)
 
     return (
         <div>
