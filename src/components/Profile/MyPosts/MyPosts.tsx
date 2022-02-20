@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Post from "./Post/Post";
 import {PostsType} from "../Profile";
 
@@ -9,11 +9,11 @@ export type MyPostPropsType = {
 const MyPosts = (props: MyPostPropsType) => {
     const postItem = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount}/>)
 
-    let newPostValue = React.createRef()
+    let [newPostValue, setNewPostValue] = useState<string>('')
 
-    let addPost = () => {
-        let text=newPostValue.current.value
-        alert(text)
+    let addPostHandler = () => {
+        alert(newPostValue)
+        setNewPostValue('')
     }
 
     return (
@@ -21,10 +21,13 @@ const MyPosts = (props: MyPostPropsType) => {
             <div>MyPost</div>
             <div>
                 <div>
-                    <textarea ref={newPostValue}/>
+                    <textarea
+                        value={newPostValue}
+                        onChange={(e)=>{setNewPostValue(e.currentTarget.value)}}
+                    />
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={addPostHandler}>Add post</button>
                 </div>
             </div>
             <div>
