@@ -16,6 +16,7 @@ type AppPropsType = {
             messages: Array<MessageProps>
         }
     }
+    addPost: (message: string)=>void
 }
 
 const App = (props: AppPropsType) => {
@@ -27,14 +28,14 @@ const App = (props: AppPropsType) => {
                     <Navbar/>
                     <div className="content">
                         <Routes>
-                            <Route path='/profile' element={<Profile state={props.state.profilePage}/>}/>
+                            <Route path='/profile' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
                             {/*<Route path='/profile' element={<Profile posts={props.state.profilePage.posts}/>}/>*/}
 
                             {/*<Route path='/profile' element={() =><Profile posts={posts}/>}/>*/}
                             <Route path='/dialogs' element={<Dialogs state={props.state.messagePage} />}/>
-                            <Route path='/news' element={<Profile state={props.state.profilePage}/>}/>
-                            <Route path='/music' element={<Profile state={props.state.profilePage}/>}/>
-                            <Route path='/settings' element={<Profile state={props.state.profilePage}/>}/>
+                            <Route path='/news' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                            <Route path='/music' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                            <Route path='/settings' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
                         </Routes>
                     </div>
                 </div>

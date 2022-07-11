@@ -1,9 +1,11 @@
 import React, {ChangeEvent, useState} from 'react';
 import Post from "./Post/Post";
 import {PostsType} from "../Profile";
+import message from "../../Dialogs/Message/Message";
 
 export type MyPostPropsType = {
    posts: Array<PostsType>
+    addPost: (message: string)=>void
 }
 
 const MyPosts = (props: MyPostPropsType) => {
@@ -18,8 +20,12 @@ const MyPosts = (props: MyPostPropsType) => {
     const newPostValue = React.createRef<HTMLTextAreaElement>()
 
     let addPostHandler = () => {
+        if(newPostValue.current?.value){
+            props.addPost(newPostValue.current.value)
+            newPostValue.current.value=''
+        }
 
-        alert(newPostValue.current?.value)
+        // alert(newPostValue.current?.value)
         // setNewPostValue('')
     }
 

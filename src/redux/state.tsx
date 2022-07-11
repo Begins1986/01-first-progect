@@ -1,3 +1,6 @@
+import message from "../components/Dialogs/Message/Message";
+import {rerenderEntierTree} from "../index";
+
 export let state = {
     profilePage: {
         posts: [
@@ -25,4 +28,15 @@ export let state = {
             {id: 6, name: 'Yo'},
         ],
     },
+}
+
+export const addPost = (message: string)=>{
+    let newPost={
+        id: 5,
+        message: message,
+        likeCount: 0
+    }
+    state.profilePage.posts.push(newPost)
+    rerenderEntierTree()
+    console.log(state)
 }
