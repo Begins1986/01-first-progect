@@ -6,7 +6,7 @@ import Profile, {PostsType} from "./components/Profile/Profile";
 import Dialogs, {DialogProps, MessageProps} from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-type AppPropsType = {
+export type AppPropsType = {
     state:{
         profilePage:{
             posts: Array<PostsType>

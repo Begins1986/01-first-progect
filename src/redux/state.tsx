@@ -1,5 +1,5 @@
 import message from "../components/Dialogs/Message/Message";
-import {rerenderEntierTree} from "../index";
+import {rerenderEntierTree} from "../render";
 
 export let state = {
     profilePage: {
@@ -37,6 +37,6 @@ export const addPost = (message: string)=>{
         likeCount: 0
     }
     state.profilePage.posts.push(newPost)
-    rerenderEntierTree()
+    rerenderEntierTree(state)
     console.log(state)
 }
