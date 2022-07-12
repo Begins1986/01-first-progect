@@ -10,13 +10,15 @@ export type AppPropsType = {
     state:{
         profilePage:{
             posts: Array<PostsType>
+            newPost: string
         }
         messagePage: {
             dialogs: Array<DialogProps>
             messages: Array<MessageProps>
         }
     }
-    addPost: (message: string)=>void
+    addPost: ()=>void
+    addNewPost: (newPost: string)=>void
 }
 
 const App = (props: AppPropsType) => {
@@ -28,14 +30,14 @@ const App = (props: AppPropsType) => {
                     <Navbar/>
                     <div className="content">
                         <Routes>
-                            <Route path='/profile' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                            <Route path='/profile' element={<Profile state={props.state.profilePage} addPost={props.addPost} addNewPost={props.addNewPost}/>}/>
                             {/*<Route path='/profile' element={<Profile posts={props.state.profilePage.posts}/>}/>*/}
 
                             {/*<Route path='/profile' element={() =><Profile posts={posts}/>}/>*/}
                             <Route path='/dialogs' element={<Dialogs state={props.state.messagePage} />}/>
-                            <Route path='/news' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
-                            <Route path='/music' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
-                            <Route path='/settings' element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                            <Route path='/news' element={<Profile state={props.state.profilePage} addPost={props.addPost} addNewPost={props.addNewPost}/>}/>
+                            <Route path='/music' element={<Profile state={props.state.profilePage} addPost={props.addPost} addNewPost={props.addNewPost}/>}/>
+                            <Route path='/settings' element={<Profile state={props.state.profilePage} addPost={props.addPost} addNewPost={props.addNewPost}/>}/>
                         </Routes>
                     </div>
                 </div>

@@ -12,15 +12,18 @@ export type PostsType = {
 export type PropsType = {
     state:{
         posts: Array<PostsType>
+        newPost: string
     }
-    addPost: (message: string)=>void
+    addPost: ()=>void
+    addNewPost: (newPost: string)=>void
+
 }
 
 const Profile = (props: PropsType) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts} addPost={props.addPost}/>
+            <MyPosts posts={props.state.posts} newPost={props.state.newPost} addPost={props.addPost} addNewPost={props.addNewPost}/>
         </div>
     );
 };

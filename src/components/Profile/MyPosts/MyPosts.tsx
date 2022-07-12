@@ -4,8 +4,10 @@ import {PostsType} from "../Profile";
 import message from "../../Dialogs/Message/Message";
 
 export type MyPostPropsType = {
-   posts: Array<PostsType>
-    addPost: (message: string)=>void
+    posts: Array<PostsType>
+    addPost: () => void
+    newPost:string
+    addNewPost: (newPost: string)=>void
 }
 
 const MyPosts = (props: MyPostPropsType) => {
@@ -20,13 +22,17 @@ const MyPosts = (props: MyPostPropsType) => {
     const newPostValue = React.createRef<HTMLTextAreaElement>()
 
     let addPostHandler = () => {
-        if(newPostValue.current?.value){
-            props.addPost(newPostValue.current.value)
-            newPostValue.current.value=''
+        if (newPostValue.current?.value) {
+            props.addPost()
         }
-
         // alert(newPostValue.current?.value)
         // setNewPostValue('')
+    }
+
+    const newPostHandler = () => {
+        if (newPostValue.current?.value) {
+            props.addNewPost(newPostValue.current.value)
+        }
     }
 
     return (
@@ -36,6 +42,8 @@ const MyPosts = (props: MyPostPropsType) => {
                 <div>
                     <textarea
                         ref={newPostValue}
+                        onChange={newPostHandler}
+                        value={props.newPost}
                         // onChange={(e)=>{setNewPostValue(e.currentTarget.value)}}
                         // onChange={onChangeNewPostHandler}
                     />
