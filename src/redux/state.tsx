@@ -1,7 +1,6 @@
-import message from "../components/Dialogs/Message/Message";
-import {rerenderEntierTree} from "../render";
 import {PostsType} from "../components/Profile/Profile";
 import {DialogProps, MessageProps} from "../components/Dialogs/Dialogs";
+
 
 export type stateType = {
         profilePage:{
@@ -12,6 +11,10 @@ export type stateType = {
             dialogs: Array<DialogProps>
             messages: Array<MessageProps>
         }
+}
+
+let rerenderEntierTree = (state:stateType) =>{
+    console.log("yo")
 }
 
 export const state = {
@@ -50,7 +53,7 @@ export const addPost = ()=>{
         message: state.profilePage.newPost,
         likeCount: 0
     }
-    state.profilePage.posts.push(newPost)
+    state.profilePage.posts.unshift(newPost)
     state.profilePage.newPost=''
     rerenderEntierTree(state)
     console.log(state)
@@ -61,3 +64,8 @@ export const addNewPost = (newPost: string)=>{
     rerenderEntierTree(state)
     console.log(state)
 }
+
+export const subscribe = (observer: any) => {
+    rerenderEntierTree = observer
+}
+
