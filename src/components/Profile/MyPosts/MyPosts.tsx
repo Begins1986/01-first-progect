@@ -1,7 +1,7 @@
-import React, {ChangeEvent, useState} from 'react';
+import React from 'react';
 import Post from "./Post/Post";
 import {PostsType} from "../Profile";
-import message from "../../Dialogs/Message/Message";
+// import message from "../../Dialogs/Message/Message";
 
 export type MyPostPropsType = {
     posts: Array<PostsType>
