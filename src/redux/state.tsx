@@ -20,6 +20,7 @@ export type StoreType = {
     addNewPost: (newPost: string)=>void
     subscribe: (observer: ()=>void) =>void
     getState: ()=>StateType
+    dispatch: (action:any)=>void
 }
 
 export const store = {
@@ -58,24 +59,41 @@ export const store = {
     _rerenderEntierTree (){
         console.log("yo")
     },
-    addPost (){
-        let newPost={
-            id: 5,
-            message: this._state.profilePage.newPost,
-            likeCount: 0
-        }
-        this._state.profilePage.posts.unshift(newPost)
-        this._state.profilePage.newPost=''
-        this._rerenderEntierTree()
-        console.log(this._state)
-    },
-    addNewPost(newPost: string){
-        this._state.profilePage.newPost = newPost
-        this._rerenderEntierTree()
-        console.log(this._state)
-    },
+    // addPost (){
+    //     let newPost={
+    //         id: 5,
+    //         message: this._state.profilePage.newPost,
+    //         likeCount: 0
+    //     }
+    //     this._state.profilePage.posts.unshift(newPost)
+    //     this._state.profilePage.newPost=''
+    //     this._rerenderEntierTree()
+    //     console.log(this._state)
+    // },
+    // addNewPost(newPost: string){
+    //     this._state.profilePage.newPost = newPost
+    //     this._rerenderEntierTree()
+    //     console.log(this._state)
+    // },
     subscribe (observer: ()=>void) {
         this._rerenderEntierTree = observer
+    },
+
+    dispatch (action:any) {
+        if (action.type==='ADD-POST'){
+            let newPost={
+                id: 5,
+                message: this._state.profilePage.newPost,
+                likeCount: 0
+            }
+            this._state.profilePage.posts.unshift(newPost)
+            this._state.profilePage.newPost=''
+            this._rerenderEntierTree()
+            console.log(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST'){
+            this._state.profilePage.newPost = action.newPost
+            this._rerenderEntierTree()
+        }
     }
 }
 
